@@ -288,6 +288,7 @@
         <h1>感恩餐會抽獎選號</h1>
         <div class="subtitle">選一個你喜歡的號碼；已被選走會即時更新。每位同仁同一時間只能保留一個號碼（可先放棄再重選）。</div>
 <div class="subtitle">如要查詢自己選過的號碼，請輸入自己的姓名即可。</div>
+<div class="hint">使用方式：先輸入自己的姓名，然後點擊下方想選號碼的格子就完成選號了。</div>
       </div>
     </div>
 
@@ -484,8 +485,11 @@
           .select();
 
         if (error) return log(friendlyPickError(error));
-        if (data && data.length) return log(`✨ 隨機分配給你：${pick}`);
-        await loadAll();
+        if (data && data.length){
+          log(`✨ 隨機分配給你：${pick}`);
+          await loadAll();
+          return;
+          }
       }
 
       log('隨機分配遇到多人同時搶號，請再按一次。');
